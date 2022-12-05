@@ -1,22 +1,6 @@
-import Player
-from Player import Player
-from dataStructures import PlayerState
-from Hand import Hand
-from EvaluateNumberedCards import EvaluateNumberedCards
 from Position import HandPosition
 from Position import AwokenQueenPosition
 from Position import SleepingQueenPosition
-from typing import Union
-from QueenCollection import AwokenQueens
-from QueenCollection import SleepingQueens
-from dataStructures import CardType
-from dataStructures import Card
-from DrawingAndTrashPile import DrawingAndTrashPile
-from EvaluateAttack import EvaluateAttack
-from MoveQueen import MoveQueen
-from dataStructures import Queen
-from dataStructures import GameState
-import random
 from Game import Game
 from GameObservable import GameObservable
 

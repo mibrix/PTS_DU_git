@@ -8,11 +8,8 @@ from typing import Union
 from QueenCollection import AwokenQueens
 from QueenCollection import SleepingQueens
 from dataStructures import CardType
-from dataStructures import Card
-from DrawingAndTrashPile import DrawingAndTrashPile
 from EvaluateAttack import EvaluateAttack
 from MoveQueen import MoveQueen
-from dataStructures import Queen
 from dataStructures import GameState
 
 

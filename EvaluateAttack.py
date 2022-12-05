@@ -1,6 +1,5 @@
 from dataStructures import CardType
 from Position import AwokenQueenPosition
-from Position import HandPosition
 from Hand import Hand
 from QueenCollection import AwokenQueens
 
