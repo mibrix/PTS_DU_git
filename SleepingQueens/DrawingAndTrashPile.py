@@ -11,6 +11,8 @@ class DrawingAndTrashPile:
     def discardAndDraw(self, discard : list[Card], discard_before_shuffle : int = 3) -> list[Card]:
 
         output = []
+
+        #OCP solution for handling shuffle of cards
         if len(discard) > len(self.drawingPile):
             # discard
             for i in range(discard_before_shuffle):
