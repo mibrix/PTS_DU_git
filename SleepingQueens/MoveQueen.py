@@ -1,5 +1,5 @@
-from Position import AwokenQueenPosition
-from QueenCollection import AwokenQueens
+from SleepingQueens.Position import AwokenQueenPosition
+from SleepingQueens.QueenCollection import AwokenQueens
 
 class MoveQueen:
 

@@ -1,12 +1,12 @@
 from SleepingQueens.dataStructures import PlayerState
 from SleepingQueens.Hand import Hand
 from SleepingQueens.EvaluateNumberedCards import EvaluateNumberedCards
-from Position import HandPosition
-from Position import AwokenQueenPosition
-from Position import SleepingQueenPosition
+from SleepingQueens.Position import HandPosition
+from SleepingQueens.Position import AwokenQueenPosition
+from SleepingQueens.Position import SleepingQueenPosition
 from typing import Union
-from QueenCollection import AwokenQueens
-from QueenCollection import SleepingQueens
+from SleepingQueens.QueenCollection import AwokenQueens
+from SleepingQueens.QueenCollection import SleepingQueens
 from SleepingQueens.dataStructures import CardType
 from SleepingQueens.EvaluateAttack import EvaluateAttack
 from SleepingQueens.MoveQueen import MoveQueen
@@ -66,7 +66,7 @@ class Player():
                                 self.gameState.cards[i] = new_cards[y]
                                 break
 
-                    return [f'Hrac {self.playerIdx} uspesne vyhodil dve karty',[self.playerIdx]]
+                    return [[f'Hrac {self.playerIdx} uspesne vyhodil dve karty'],[self.playerIdx]]
                 #poslal dve karty z rozdielnym cislom
                 else:
                     return [["Neuspeny tah. Tah zopakuj!"],[self.playerIdx],False]
@@ -196,7 +196,7 @@ class Player():
                 # update gamestate
                 self.gameState.awokenQueens[AwokenQueenPosition(q_ind,self.playerIdx)] = temp_q
 
-                return [f'Hrac {self.playerIdx} uspesne zobudil kralovnu',[self.playerIdx]]
+                return [[f'Hrac {self.playerIdx} uspesne zobudil kralovnu'],[self.playerIdx]]
 
         elif len(cards) == 3:
             if (self.playerState.cards[cards[0].getCardIndex()].type == CardType.Number

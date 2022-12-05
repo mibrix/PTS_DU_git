@@ -1,8 +1,8 @@
-from Position import HandPosition
-from Position import AwokenQueenPosition
-from Position import SleepingQueenPosition
+from SleepingQueens.Position import HandPosition
+from SleepingQueens.Position import AwokenQueenPosition
+from SleepingQueens.Position import SleepingQueenPosition
 from SleepingQueens.Game import Game
-from GameObservable import GameObservable
+from SleepingQueens.GameObservable import GameObservable
 
 
 class GameAdaptor:
@@ -37,7 +37,7 @@ class GameAdaptor:
         if(len(out) > 2):
             self.gameObservable.notifyAll(out[0][0])
 
-a = GameAdaptor(['Jaro','Fifo','Kubo'])
-print([(a.game.playersList[0].hand.getCards()[i].value,a.game.playersList[0].hand.getCards()[i].type) for i in range(5)])
-a.play('Jaro','h5')
-print([(a.game.playersList[0].hand.getCards()[i].value,a.game.playersList[0].hand.getCards()[i].type) for i in range(5)])
+# a = GameAdaptor(['Jaro','Fifo','Kubo'])
+# print([(a.game.playersList[0].hand.getCards()[i].value,a.game.playersList[0].hand.getCards()[i].type) for i in range(5)])
+# a.play('Jaro','h5')
+# print([(a.game.playersList[0].hand.getCards()[i].value,a.game.playersList[0].hand.getCards()[i].type) for i in range(5)])

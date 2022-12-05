@@ -1,8 +1,10 @@
 
 class GameObserver:
+    def __init__(self):
+        self.messages : list[str] = []
 
     def notify(self,message : str):
-        print(message)
+        self.messages.append(message)
         return message
 
 

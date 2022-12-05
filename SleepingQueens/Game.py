@@ -1,19 +1,19 @@
-import Player
-from Player import Player
+import SleepingQueens.Player
+from SleepingQueens.Player import Player
 from SleepingQueens.dataStructures import PlayerState
-from Hand import Hand
-from Position import HandPosition
-from Position import AwokenQueenPosition
-from Position import SleepingQueenPosition
+from SleepingQueens.Hand import Hand
+from SleepingQueens.Position import HandPosition
+from SleepingQueens.Position import AwokenQueenPosition
+from SleepingQueens.Position import SleepingQueenPosition
 from typing import Union
-from QueenCollection import SleepingQueens
+from SleepingQueens.QueenCollection import SleepingQueens
 from SleepingQueens.dataStructures import CardType
 from SleepingQueens.dataStructures import Card
 from SleepingQueens.DrawingAndTrashPile import DrawingAndTrashPile
 from SleepingQueens.dataStructures import Queen
 from SleepingQueens.dataStructures import GameState
 import random
-from GameFinished import GameFinished
+from SleepingQueens.GameFinished import GameFinished
 
 
 
@@ -54,7 +54,7 @@ class Game:
                     cards_for_player_state[position.getCardIndex()] = card
             PlayerState(cards_for_player_state,{})
             self.playersList.append(Player(i, PlayerState(cards_for_player_state, {}), self.sleepingQueens,
-                                           Hand(i,cards_for_player_state,self.drawingAndTrashPile)))
+                                           Hand(i,cards_for_player_state,self.drawingAndTrashPile),self.gameState))
 
     def play(self,playerIdx : int, cards:list[Union[HandPosition, AwokenQueenPosition, SleepingQueenPosition]]) -> list:
         if playerIdx != self.gameState.onTurn:
@@ -66,13 +66,13 @@ class Game:
 
         out = self.playersList[playerIdx].play(cards)
         if len(out) != 3:
-            if playerIdx < self.gameState.numberOfPlayers:
+            if playerIdx+1 < self.gameState.numberOfPlayers:
                 self.gameState.onTurn = playerIdx + 1
             else:
                 self.gameState.onTurn = 0
 
         #game finish
-        temp_fin = self.gameFinished.eval(self.gameState)[0]
+        temp_fin = self.gameFinished.eval(self.gameState)
         if temp_fin[0]:
             return [[f'Hrac {temp_fin[1]} vyhral!'],[1,1,1]]
         return out

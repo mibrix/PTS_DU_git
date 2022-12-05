@@ -1,7 +1,7 @@
 from enum import Enum
-from Position import SleepingQueenPosition
-from Position import AwokenQueenPosition
-from Position import HandPosition
+from SleepingQueens.Position import SleepingQueenPosition
+from SleepingQueens.Position import AwokenQueenPosition
+from SleepingQueens.Position import HandPosition
 
 class Queen:
     def __init__(self, points : int):

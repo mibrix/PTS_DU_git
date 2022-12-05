@@ -1,7 +1,7 @@
 from SleepingQueens.dataStructures import CardType
-from Position import AwokenQueenPosition
-from Hand import Hand
-from QueenCollection import AwokenQueens
+from SleepingQueens.Position import AwokenQueenPosition
+from SleepingQueens.Hand import Hand
+from SleepingQueens.QueenCollection import AwokenQueens
 
 class EvaluateAttack:
 

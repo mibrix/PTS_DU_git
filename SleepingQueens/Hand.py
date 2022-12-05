@@ -1,4 +1,4 @@
-from Position import HandPosition
+from SleepingQueens.Position import HandPosition
 from SleepingQueens.dataStructures import Card
 from SleepingQueens.dataStructures import CardType
 from SleepingQueens.DrawingAndTrashPile import DrawingAndTrashPile
