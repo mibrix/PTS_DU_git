@@ -5,17 +5,17 @@ from unittest import TestCase
 
 
 class TestGameObservabale(TestCase):
-    def zahodJednuKartu(self, gameA: GameAdaptor):
+    def zahodJednuKartu(self, gameA: GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         gameA.play('Jano', 'h1')
         self.assertEqual(gameA.gameObservable.playerObservers[0].messages, ['Hrac 0 uspesne vyhodil kartu'])
 
-    def zobudKralovnu(self, gameA: GameAdaptor):
+    def zobudKralovnu(self, gameA: GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         gameA.game.playersList[0].hand.currentHand[5] = Card(CardType.King, 5)
         gameA.play('Jano', 'h6 s1')
         self.assertEqual(gameA.gameObservable.playerObservers[0].messages, ['Hrac 0 uspesne zobudil kralovnu'])
 
 
-    def zoberKralovnuOponentovi(self, gameA: GameAdaptor):
+    def zoberKralovnuOponentovi(self, gameA: GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         gameA.play('Jano', 'h2')
         gameA.game.playersList[1].hand.currentHand[5] = Card(CardType.King, 5)
         gameA.play('Fero', 'h6 s1')
@@ -27,20 +27,20 @@ class TestGameObservabale(TestCase):
                              , 'Hrac 2 uspesne vyhodil kartu', 'Hrac 1 sa ubranil pred utokom hraca 0'])
 
 
-    def vyhodDveKarty(self, gameA: GameAdaptor):
+    def vyhodDveKarty(self, gameA: GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         gameA.game.playersList[0].hand.currentHand[0] = Card(CardType.Number, 3)
         gameA.game.playersList[0].hand.currentHand[1] = Card(CardType.Number, 3)
         gameA.play('Jano', 'h1 h2')
         self.assertEqual(gameA.gameObservable.gameObserver[0].messages, ['Hrac 0 uspesne vyhodil dve karty'])
 
-    def vyhodTriKarty(self, gameA : GameAdaptor):
+    def vyhodTriKarty(self, gameA : GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         gameA.game.playersList[0].hand.currentHand[0] = Card(CardType.Number,3)
         gameA.game.playersList[0].hand.currentHand[1] = Card(CardType.Number,3)
         gameA.game.playersList[0].hand.currentHand[2] = Card(CardType.Number,6)
         gameA.play('Jano','h1 h2 h3')
         self.assertEqual(gameA.gameObservable.gameObserver[0].messages, ['Hrac 0 vyhodil 3 karty'])
 
-    def uspiKralovnu(self, gameA : GameAdaptor):
+    def uspiKralovnu(self, gameA : GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         gameA.play('Jano', 'h2')
         gameA.game.playersList[1].hand.currentHand[5] = Card(CardType.King, 5)
         gameA.play('Fero', 'h6 s1')
@@ -52,7 +52,7 @@ class TestGameObservabale(TestCase):
                                                          'Hrac 2 uspesne vyhodil kartu',
                                                          'Hrac 0 uspesne zautocil na kralovnu hraca 1'])
 
-    def koniecHry(self, gameA : GameAdaptor):
+    def koniecHry(self, gameA : GameAdaptor = GameAdaptor(['Jano','Fero','Juro'])):
         for i in range(5):
             gameA.game.playersList[0].hand.currentHand[5] = Card(CardType.King,5)
             gameA.play('Jano',f'h6 s{i+1}')
