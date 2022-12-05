@@ -1,16 +1,16 @@
-from dataStructures import PlayerState
-from Hand import Hand
-from EvaluateNumberedCards import EvaluateNumberedCards
+from SleepingQueens.dataStructures import PlayerState
+from SleepingQueens.Hand import Hand
+from SleepingQueens.EvaluateNumberedCards import EvaluateNumberedCards
 from Position import HandPosition
 from Position import AwokenQueenPosition
 from Position import SleepingQueenPosition
 from typing import Union
 from QueenCollection import AwokenQueens
 from QueenCollection import SleepingQueens
-from dataStructures import CardType
-from EvaluateAttack import EvaluateAttack
-from MoveQueen import MoveQueen
-from dataStructures import GameState
+from SleepingQueens.dataStructures import CardType
+from SleepingQueens.EvaluateAttack import EvaluateAttack
+from SleepingQueens.MoveQueen import MoveQueen
+from SleepingQueens.dataStructures import GameState
 
 
 

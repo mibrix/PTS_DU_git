@@ -1,7 +1,7 @@
 from Position import HandPosition
-from dataStructures import Card
-from dataStructures import CardType
-from DrawingAndTrashPile import DrawingAndTrashPile
+from SleepingQueens.dataStructures import Card
+from SleepingQueens.dataStructures import CardType
+from SleepingQueens.DrawingAndTrashPile import DrawingAndTrashPile
 
 class Hand:
 

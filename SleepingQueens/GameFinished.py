@@ -1,4 +1,4 @@
-from dataStructures import GameState
+from SleepingQueens.dataStructures import GameState
 
 class GameFinished:
     def eval(self, gameState : GameState) -> list:

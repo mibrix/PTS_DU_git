@@ -1,4 +1,4 @@
-from dataStructures import Card
+from SleepingQueens.dataStructures import Card
 import random
 
 class DrawingAndTrashPile:

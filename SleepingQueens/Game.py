@@ -1,17 +1,17 @@
 import Player
 from Player import Player
-from dataStructures import PlayerState
+from SleepingQueens.dataStructures import PlayerState
 from Hand import Hand
 from Position import HandPosition
 from Position import AwokenQueenPosition
 from Position import SleepingQueenPosition
 from typing import Union
 from QueenCollection import SleepingQueens
-from dataStructures import CardType
-from dataStructures import Card
-from DrawingAndTrashPile import DrawingAndTrashPile
-from dataStructures import Queen
-from dataStructures import GameState
+from SleepingQueens.dataStructures import CardType
+from SleepingQueens.dataStructures import Card
+from SleepingQueens.DrawingAndTrashPile import DrawingAndTrashPile
+from SleepingQueens.dataStructures import Queen
+from SleepingQueens.dataStructures import GameState
 import random
 from GameFinished import GameFinished
 

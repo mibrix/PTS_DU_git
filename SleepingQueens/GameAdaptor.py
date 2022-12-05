@@ -1,7 +1,7 @@
 from Position import HandPosition
 from Position import AwokenQueenPosition
 from Position import SleepingQueenPosition
-from Game import Game
+from SleepingQueens.Game import Game
 from GameObservable import GameObservable
 
 

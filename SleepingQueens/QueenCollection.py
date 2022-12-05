@@ -1,6 +1,6 @@
-from dataStructures import Queen
-from Position import SleepingQueenPosition
-from Position import AwokenQueenPosition
+from SleepingQueens.dataStructures import Queen
+from SleepingQueens.Position import SleepingQueenPosition
+from SleepingQueens.Position import AwokenQueenPosition
 from typing import Union
 
 class QueenCollection:

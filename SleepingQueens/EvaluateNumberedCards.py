@@ -1,5 +1,5 @@
-from dataStructures import Card
-from dataStructures import CardType
+from SleepingQueens.dataStructures import Card
+from SleepingQueens.dataStructures import CardType
 
 class EvaluateNumberedCards:
 

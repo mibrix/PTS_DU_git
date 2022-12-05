@@ -1,4 +1,4 @@
-from dataStructures import CardType
+from SleepingQueens.dataStructures import CardType
 from Position import AwokenQueenPosition
 from Hand import Hand
 from QueenCollection import AwokenQueens
