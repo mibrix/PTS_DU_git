@@ -77,31 +77,5 @@ class Game:
             return [[f'Hrac {temp_fin[1]} vyhral!'],[1,1,1]]
         return out
 
-#test ci ma hrac na ruke 5 kariet a ci su rovnake s tymi v gamestate
-# a = Game(3)
-# print(a.playersList[0].hand.getCards())
-# for i in a.playersList[0].hand.getCards():
-#     print(i.value,i.type)
-#
-# print()
-# for i,y in a.gameState.cards.items():
-#     if i.getPlayerIndex() == 0:
-#         print(y.value,y.type)
 
-#napisat test na utok
-
-# a = Game(3)
-# print([(a.playersList[0].hand.getCards()[i].value,a.playersList[0].hand.getCards()[i].type) for i in range(5)])
-# a.play(0,[HandPosition(0,0)])
-# print([(a.playersList[0].hand.getCards()[i].value,a.playersList[0].hand.getCards()[i].type) for i in range(5)])
-
-#ak je karta HandPosition(0,0) kral
-#a.play(0,[HandPosition(0,0),SleepingQueenPosition(0)])
-#len(a.sleepingQueens.getQueens())
-#a.playersList[0].awokenQueens.getQueens()
-
-#ak ma hrac0 kralovnu a HandPosition(0,1) je knight
-# a.play(1,[HandPosition(0,1),AwokenQueenPosition(0,0)])
-# a.playersList[0].awokenQueens.getQueens()
-# a.playersList[1].awokenQueens.getQueens()
 

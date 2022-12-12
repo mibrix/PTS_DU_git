@@ -34,7 +34,3 @@ class Hand:
 
     def getCards(self):
         return [i for i in self.currentHand.values()]
-
-
-a = Hand(1,{1:Card(CardType(1),5)},DrawingAndTrashPile([Card(CardType(1),6),Card(CardType(1),4)], []))
-#print(a.getCards())

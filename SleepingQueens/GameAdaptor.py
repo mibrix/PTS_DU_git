@@ -37,7 +37,3 @@ class GameAdaptor:
         if(len(out) > 2):
             self.gameObservable.notifyAll(out[0][0])
 
-# a = GameAdaptor(['Jaro','Fifo','Kubo'])
-# print([(a.game.playersList[0].hand.getCards()[i].value,a.game.playersList[0].hand.getCards()[i].type) for i in range(5)])
-# a.play('Jaro','h5')
-# print([(a.game.playersList[0].hand.getCards()[i].value,a.game.playersList[0].hand.getCards()[i].type) for i in range(5)])
