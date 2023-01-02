@@ -7,7 +7,7 @@ class Hand:
 
     def __init__(self, playerIdx : int, currentHand : dict[int,Card], drawingAndTrashPile : DrawingAndTrashPile):
         self.playerIdx = playerIdx
-        self.pickedCards = []
+        self.pickedCards : list[Card]
         self.currentHand = currentHand
         self.drawingAndTrashPile = drawingAndTrashPile  #toto sem spadne z Game() pri inicializacii
 

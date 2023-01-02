@@ -3,7 +3,7 @@ from SleepingQueens.dataStructures import GameState
 class GameFinished:
     def eval(self, gameState : GameState) -> list:
 
-        temp = {}
+        temp : dict[int, list[int]] = {}
         for handpos,queen in gameState.awokenQueens.items():
             if handpos.getPlayerIndex() not in temp.keys():
                 temp[handpos.getPlayerIndex()] = [queen.points]
@@ -23,9 +23,9 @@ class GameFinished:
         if len(gameState.sleepingQueens) == 0:
             max_points = 0
             pl_idx = -1
-            for player,queen in temp.items():
-                if sum(queen) > max_points:
-                    max_points = sum(queen)
+            for player,queenn in temp.items():
+                if sum(queenn) > max_points:
+                    max_points = sum(queenn)
                     pl_idx = player
             return [True, pl_idx]
 

@@ -1,4 +1,3 @@
-import SleepingQueens.Player
 from SleepingQueens.Player import Player
 from SleepingQueens.dataStructures import PlayerState
 from SleepingQueens.Hand import Hand
@@ -29,7 +28,7 @@ class Game:
 
     def __init__(self,  numberOfPlayers : int, ):
 
-        temp_q = {}
+        temp_q : dict[Union[AwokenQueenPosition, SleepingQueenPosition], Queen] = {}
         for n,i in enumerate(self.queens):
             temp_q[SleepingQueenPosition(n)] = i
 
@@ -37,9 +36,9 @@ class Game:
 
         to_be_given = self.kings + self.knights + self.sleeping_potions + self.wands + self.dragons + self.numbers
         player_cards_temp = {}
-        for i in range(numberOfPlayers):
-            for y in range(5):
-                player_cards_temp[HandPosition(y,i)] = to_be_given.pop(random.randint(0,len(to_be_given)-1))
+        for a in range(numberOfPlayers):
+            for b in range(5):
+                player_cards_temp[HandPosition(b,a)] = to_be_given.pop(random.randint(0,len(to_be_given)-1))
 
         self.drawingAndTrashPile = DrawingAndTrashPile(to_be_given, [])
 
@@ -47,14 +46,14 @@ class Game:
                                    {},[])
 
         self.playersList = []
-        for i in range(numberOfPlayers):
+        for c in range(numberOfPlayers):
             cards_for_player_state = {}
             for position,card in player_cards_temp.items():
-                if position.getPlayerIndex() == i:
+                if position.getPlayerIndex() == c:
                     cards_for_player_state[position.getCardIndex()] = card
             PlayerState(cards_for_player_state,{})
-            self.playersList.append(Player(i, PlayerState(cards_for_player_state, {}), self.sleepingQueens,
-                                           Hand(i,cards_for_player_state,self.drawingAndTrashPile),self.gameState))
+            self.playersList.append(Player(c, PlayerState(cards_for_player_state, {}), self.sleepingQueens,
+                                           Hand(c,cards_for_player_state,self.drawingAndTrashPile),self.gameState))
 
     def play(self,playerIdx : int, cards:list[Union[HandPosition, AwokenQueenPosition, SleepingQueenPosition]]) -> list:
         if playerIdx != self.gameState.onTurn:

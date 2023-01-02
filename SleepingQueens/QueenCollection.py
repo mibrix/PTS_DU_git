@@ -28,11 +28,13 @@ class QueenCollection:
             return temp[-1]+1
 
     def removeQueen(self,position : Union[AwokenQueenPosition, SleepingQueenPosition]) -> Queen:
+        temp = Queen(-1)
         for i in self.getQueens().keys():
             if position.getCardIndex() == i.getCardIndex():
                 temp = self.QueensList[i]
                 self.QueensList.pop(i)
-                return temp
+                break
+        return temp
 
 
     def getQueens(self) -> dict[Union[AwokenQueenPosition, SleepingQueenPosition], Queen]:

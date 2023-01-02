@@ -3,6 +3,7 @@ from SleepingQueens.Position import AwokenQueenPosition
 from SleepingQueens.Position import SleepingQueenPosition
 from SleepingQueens.Game import Game
 from SleepingQueens.GameObservable import GameObservable
+from typing import Union
 
 
 class GameAdaptor:
@@ -19,7 +20,7 @@ class GameAdaptor:
     def play(self, player : str , cards : str):
         idx_pl = self.players.index(player)
         temp = cards.split()
-        to_play = []
+        to_play : list[Union[AwokenQueenPosition, SleepingQueenPosition, HandPosition]] = []
         for i in temp:
             if i[0] == 'h':
                 to_play.append(HandPosition(int(i[1:])-1,idx_pl))

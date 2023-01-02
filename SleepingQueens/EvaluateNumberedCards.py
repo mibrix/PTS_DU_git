@@ -20,3 +20,4 @@ class EvaluateNumberedCards:
                 elif cards[0].value + cards[2].value == cards[1].value:
                     return True
             return False
+        return False

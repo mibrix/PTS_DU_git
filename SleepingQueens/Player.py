@@ -211,6 +211,8 @@ class Player():
                 else:
                     return [[f'Hrac {self.playerIdx} sa neuspesne pokusil vyhodit 3 karty. Zopakuj tah!'],[self.playerIdx],
                             False]
+        return [[f'Hrac {self.playerIdx} sa neuspesne pokusil vyhodit 0 alebo viac ako 3 karty. Zopakuj tah!'],
+                [self.playerIdx], False]
 
     def set_opp_queen(self, opp_queens : AwokenQueens):
         self.currentTargetOpponentQueens = opp_queens
