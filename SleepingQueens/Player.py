@@ -18,17 +18,20 @@ from Messages import Messages
 class Player():
 
     def __init__(self, playerIdx : int, playerState : PlayerState, currentlySleepingQueens : SleepingQueens,
-                 hand : Hand, gameState : GameState, messages : Messages):
+                 hand : Hand, gameState : GameState, messages : Messages,
+                 evaluateNumberedCards: EvaluateNumberedCards = EvaluateNumberedCards(),
+                 awokenQueens : AwokenQueens = AwokenQueens({},'awake',-1)):
         self.playerState = playerState
         self.hand = hand
         self.playerIdx = playerIdx
-        self.evaluateNumberedCards = EvaluateNumberedCards()
-        self.awokenQueens = AwokenQueens({},'awake',playerIdx)
+        self.evaluateNumberedCards = evaluateNumberedCards
         self.currentTargetOpponentHand : Hand
         self.currentTargetOpponentQueens : AwokenQueens
         self.currentlySleepingQueens = currentlySleepingQueens
         self.gameState = gameState
         self.messages = messages
+        self.awokenQueens = awokenQueens
+        self.awokenQueens.playerIdx = playerIdx
 
 
     def play(self, cards : list[Union[HandPosition, AwokenQueenPosition, SleepingQueenPosition]]) -> list:

@@ -42,9 +42,9 @@ class GameState:
                     self.cards[i] = addHandPos[y]
                     break
 
-    def updateGameStateAfterAttack(self, awQueenPos : AwokenQueenPosition, new_owner : int):
-        to_pop = AwokenQueenPosition(-1,-1)
-        temp_q = Queen(-1)
+    def updateGameStateAfterAttack(self, awQueenPos : AwokenQueenPosition, new_owner : int,
+                                   to_pop : AwokenQueenPosition = AwokenQueenPosition(-1,-1),
+                                   temp_q : Queen = Queen(-1)):
         for i in self.awokenQueens.keys():
             if (i.getCardIndex() == awQueenPos.getCardIndex() and
                     i.getPlayerIndex() == awQueenPos.getPlayerIndex()):

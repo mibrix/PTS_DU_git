@@ -27,24 +27,29 @@ class Game:
     numbers = 4 * [Card(CardType(1), y) for y in range(1, 11)]
     gameFinished = GameFinished()
 
-    def __init__(self,  numberOfPlayers : int, ):
+    def __init__(self,  numberOfPlayers : int, sleepingQueens : SleepingQueens = SleepingQueens({},'sleep'),
+                 drawingAndTrashPile : DrawingAndTrashPile = DrawingAndTrashPile([], []),
+                 gameState : GameState = GameState(-1, -1, set(), {}, {}, [])):
 
+        self.sleepingQueens = sleepingQueens
         temp_q : dict[Union[AwokenQueenPosition, SleepingQueenPosition], Queen] = {}
         for n,i in enumerate(self.queens):
             temp_q[SleepingQueenPosition(n)] = i
+        self.sleepingQueens.QueensList = temp_q
 
-        self.sleepingQueens = SleepingQueens(temp_q,'sleep')
-
+        self.drawingAndTrashPile = drawingAndTrashPile
         to_be_given = self.kings + self.knights + self.sleeping_potions + self.wands + self.dragons + self.numbers
         player_cards_temp = {}
         for a in range(numberOfPlayers):
             for b in range(5):
                 player_cards_temp[HandPosition(b,a)] = to_be_given.pop(random.randint(0,len(to_be_given)-1))
+        self.drawingAndTrashPile.drawingPile = to_be_given
 
-        self.drawingAndTrashPile = DrawingAndTrashPile(to_be_given, [])
-
-        self.gameState = GameState(numberOfPlayers, 0, set(self.sleepingQueens.getQueens().keys()), player_cards_temp,
-                                   {},[])
+        self.gameState = gameState
+        self.gameState.numberOfPlayers = numberOfPlayers
+        self.gameState.onTurn = 0
+        self.gameState.sleepingQueens = set(self.sleepingQueens.QueensList)
+        self.gameState.cards = player_cards_temp
 
         self.playersList = []
         for c in range(numberOfPlayers):
