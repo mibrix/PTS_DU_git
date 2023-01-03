@@ -13,6 +13,7 @@ from SleepingQueens.dataStructures import Queen
 from SleepingQueens.dataStructures import GameState
 import random
 from SleepingQueens.GameFinished import GameFinished
+from SleepingQueens.Messages import Messages
 
 
 
@@ -53,7 +54,8 @@ class Game:
                     cards_for_player_state[position.getCardIndex()] = card
             PlayerState(cards_for_player_state,{})
             self.playersList.append(Player(c, PlayerState(cards_for_player_state, {}), self.sleepingQueens,
-                                           Hand(c,cards_for_player_state,self.drawingAndTrashPile),self.gameState))
+                                           Hand(c,cards_for_player_state,self.drawingAndTrashPile), self.gameState,
+                                           Messages()))
 
     def play(self,playerIdx : int, cards:list[Union[HandPosition, AwokenQueenPosition, SleepingQueenPosition]]) -> list:
         if playerIdx != self.gameState.onTurn:

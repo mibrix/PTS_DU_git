@@ -1,6 +1,8 @@
+from typing import Union
+
 class Messages:
 
-    def DiscardMessage(self, who : int, how_many : int) -> list[list[str], list[int]]:
+    def DiscardMessage(self, who : int, how_many : int) -> list[list[Union[str,int]]]:
         temp = ['nula', 'jedna', 'dva', 'tri']
         return [[f'Hrac {who} uspesne vyhodil {temp[how_many]} kartu/y'],[who]]
 
