@@ -132,7 +132,7 @@ class Player():
                             return [[f'Hrac {self.playerIdx} uspesne zautocil na kralovnu hraca {cards[ind].getPlayerIndex()}'],
                                     [cards[ind].getPlayerIndex(),self.playerIdx]]
 
-            # #hrac chce uspat kralovnu superovi
+            #hrac chce uspat kralovnu superovi
             elif ((self.playerState.cards[cards[0].getCardIndex()].type == CardType.SleepingPotion
                    and cards[1].getPlayerIndex() != self.playerIdx)
                   or (self.playerState.cards[cards[1].getCardIndex()].type == CardType.SleepingPotion

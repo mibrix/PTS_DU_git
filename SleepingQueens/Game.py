@@ -17,12 +17,12 @@ from SleepingQueens.GameFinished import GameFinished
 
 
 class Game:
-    queens = [Queen(random.randint(1, 15)) for i in range(12)]
-    kings = [Card(CardType(2), random.randint(1, 15)) for y in range(8)]
-    knights = [Card(CardType(3), random.randint(1, 15)) for y in range(4)]
-    sleeping_potions = [Card(CardType(4), random.randint(1, 15)) for y in range(4)]
-    wands = [Card(CardType(6), random.randint(1, 15)) for y in range(3)]
-    dragons = [Card(CardType(5), random.randint(1, 15)) for y in range(3)]
+    queens = [Queen(random.randint(1, 15)) for _ in range(12)]
+    kings = [Card(CardType(2), random.randint(1, 15)) for _ in range(8)]
+    knights = [Card(CardType(3), random.randint(1, 15)) for _ in range(4)]
+    sleeping_potions = [Card(CardType(4), random.randint(1, 15)) for _ in range(4)]
+    wands = [Card(CardType(6), random.randint(1, 15)) for _ in range(3)]
+    dragons = [Card(CardType(5), random.randint(1, 15)) for _ in range(3)]
     numbers = 4 * [Card(CardType(1), y) for y in range(1, 11)]
     gameFinished = GameFinished()
 
@@ -75,6 +75,7 @@ class Game:
         if temp_fin[0]:
             return [[f'Hrac {temp_fin[1]} vyhral!'],[1,1,1]]
         return out
+
 
 
 
