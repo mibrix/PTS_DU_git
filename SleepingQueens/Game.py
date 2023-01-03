@@ -76,6 +76,48 @@ class Game:
             return [[f'Hrac {temp_fin[1]} vyhral!'],[1,1,1]]
         return out
 
+    def updateGameStateCards(self, removeHandPos : list[HandPosition], addHandPos : list[Card]):
+
+        for y in range(len(removeHandPos)):
+            for i in self.gameState.cards.keys():
+                if (i.getCardIndex() == removeHandPos[y].getCardIndex() and
+                        i.getPlayerIndex() == removeHandPos[y].getPlayerIndex()):
+                    self.gameState.cards[i] = addHandPos[y]
+                    break
+
+    def updateGameStateAfterAttack(self, awQueenPos : AwokenQueenPosition, new_owner : int):
+        to_pop = AwokenQueenPosition(-1,-1)
+        temp_q = Queen(-1)
+        for i in self.gameState.awokenQueens.keys():
+            if (i.getCardIndex() == awQueenPos.getCardIndex() and
+                    i.getPlayerIndex() == awQueenPos.getPlayerIndex()):
+                to_pop = i
+                temp_q = self.gameState.awokenQueens[i]
+                break
+
+        #vymaz kralovnu z awokenQueens daneho hraca
+        if to_pop.cardIndex != -1 and temp_q.points != -1:
+            self.gameState.awokenQueens.pop(to_pop)
+            to_pop.playerIndex = new_owner
+
+            #ak hrac iba uspava kralovnu
+            if new_owner == -1:
+                q_idx = 0
+                if self.gameState.sleepingQueens != set():
+                    q_idx = max([i.cardIndex for i in self.gameState.sleepingQueens]) + 1
+                self.gameState.sleepingQueens.add(SleepingQueenPosition(q_idx))
+
+            #ak hrac utoci na kralovnu druheho hraca
+            else:
+                if self.gameState.awokenQueens == {}:
+                    to_pop.cardIndex = max([i.cardIndex for i in self.gameState.awokenQueens.keys()])+1
+                else:
+                    to_pop.cardIndex = 0
+
+                self.gameState.awokenQueens[to_pop] = temp_q
+
+
+
 
 
 
