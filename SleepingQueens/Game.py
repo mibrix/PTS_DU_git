@@ -48,7 +48,7 @@ class Game:
         self.gameState = gameState
         self.gameState.numberOfPlayers = numberOfPlayers
         self.gameState.onTurn = 0
-        self.gameState.sleepingQueens = set(self.sleepingQueens.QueensList)
+        self.gameState.sleepingQueens = set([zz for zz in temp_q.keys()])
         self.gameState.cards = player_cards_temp
 
         self.playersList = []

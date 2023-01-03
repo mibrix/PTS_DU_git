@@ -11,7 +11,8 @@ from SleepingQueens.dataStructures import CardType
 from SleepingQueens.EvaluateAttack import EvaluateAttack
 from SleepingQueens.MoveQueen import MoveQueen
 from SleepingQueens.dataStructures import GameState
-from Messages import Messages
+from SleepingQueens.Messages import Messages
+from QueenCollection import Queen
 
 
 
@@ -21,7 +22,7 @@ class Player():
                  hand : Hand, gameState : GameState, messages : Messages,
                  evaluateNumberedCards: EvaluateNumberedCards = EvaluateNumberedCards(),
                  awokenQueens : AwokenQueens = AwokenQueens({},'awake',-1)):
-        self.playerState = playerState
+        self.playerState : PlayerState = playerState
         self.hand = hand
         self.playerIdx = playerIdx
         self.evaluateNumberedCards = evaluateNumberedCards
@@ -37,7 +38,7 @@ class Player():
     def play(self, cards : list[Union[HandPosition, AwokenQueenPosition, SleepingQueenPosition]]) -> list:
 
         #ak hrac iba vyhadzuje jednu kartu
-        if len(cards) == 1:
+        if len(cards) == 1 and type(cards) == list[HandPosition]:
             self.hand.pickCards(cards)
             new_card = self.hand.removePickedCardsAndRedraw()[0]
             self.playerState.cards[cards[0].getCardIndex()] = new_card
@@ -87,18 +88,18 @@ class Player():
 
                     # presun kralovnu
                     else:
-                        temp = MoveQueen(self.currentTargetOpponentQueens)
-                        temp_q = ''
+                        temp1 = MoveQueen(self.currentTargetOpponentQueens)
+                        temp_q = Queen(-1)
                         #ak uspesne vymaze opponentovy pripise sebe
-                        for i in self.currentTargetOpponentQueens.getQueens().keys():
-                            if cards[ind].getCardIndex() == i.getCardIndex():
-                                temp_q = self.currentTargetOpponentQueens.getQueens()[i]
+                        for a in self.currentTargetOpponentQueens.getQueens().keys():
+                            if cards[ind].getCardIndex() == a.getCardIndex():
+                                temp_q = self.currentTargetOpponentQueens.getQueens()[a]
                                 break
 
                         if temp_q == '':
                             return self.messages.UnsuccessfulTurnMessage(self.playerIdx)
 
-                        if temp.play(cards[ind]):
+                        if temp1.play(cards[ind]):
                             self.awokenQueens.addQueen(temp_q)
                             if self.playerState.awokenQueens != {}:
                                 self.playerState.awokenQueens[max([i for i in self.playerState.awokenQueens.keys()])+1] = temp_q
@@ -130,18 +131,18 @@ class Player():
                     return self.messages.UnsuccessfulAttackMessage(self.playerIdx, cards[ind].getPlayerIndex())
                 # presun kralovnu
                 else:
-                    temp = MoveQueen(self.currentTargetOpponentQueens)
+                    temp2 = MoveQueen(self.currentTargetOpponentQueens)
                     temp_q = ''
                     # ak uspesne vymaze opponentovy prida na flop
-                    for i in self.currentTargetOpponentQueens.getQueens().keys():
-                        if cards[ind].getCardIndex() == i.getCardIndex():
-                            temp_q = self.currentTargetOpponentQueens.getQueens()[i]
+                    for b in self.currentTargetOpponentQueens.getQueens().keys():
+                        if cards[ind].getCardIndex() == b.getCardIndex():
+                            temp_q = self.currentTargetOpponentQueens.getQueens()[b]
                             break
 
                     if temp_q == '':
                         return self.messages.UnsuccessfulTurnMessage(self.playerIdx)
 
-                    if temp.play(cards[ind]):
+                    if temp2.play(cards[ind]):
                         self.currentlySleepingQueens.addQueen(temp_q)
 
                         # update gamestate

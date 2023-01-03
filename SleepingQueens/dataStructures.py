@@ -75,5 +75,5 @@ class GameState:
 
 class PlayerState:
     def __init__(self, cards : dict[int, Card], awokenQueens : dict[int,Queen]):
-        self.cards = cards
+        self.cards : dict[int, Card] = cards
         self.awokenQueens = awokenQueens
