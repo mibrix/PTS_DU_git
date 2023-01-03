@@ -7,7 +7,7 @@ class Messages:
     def UnsuccessfulTurnMessage(self, who : int):
         return [["Neuspeny tah. Tah zopakuj!"],[who],False]
 
-    def SuccessfullAttackMessage(self, attacker : int, attacked : int):
+    def SuccessfulAttackMessage(self, attacker : int, attacked : int):
         return [[f'Hrac {attacker} uspesne zautocil na kralovnu hraca {attacked}'], [attacker, attacked]]
 
     def UnsuccessfulAttackMessage(self, attacker : int, attacked : int):
