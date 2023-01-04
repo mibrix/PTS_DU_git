@@ -12,7 +12,7 @@ class DiscardAll(DrawingStrategy):
         self.drawingPile = drawingPile
         self.trashPile = trashPile
         self.discard = discard
-        self.output = []
+        self.output :list[Card] = []
 
     def create_strategy(self) -> list[Card]:
         number_to_draw = len(self.discard)
@@ -43,7 +43,7 @@ class ShuffleAndDiscard(DrawingStrategy):
         self.drawingPile = drawingPile
         self.trashPile = trashPile
         self.discard = discard
-        self.output = []
+        self.output : list[Card] = []
 
     def create_strategy(self) -> list[Card]:
 
