@@ -2,6 +2,8 @@ from SleepingQueens.Position import HandPosition
 from SleepingQueens.dataStructures import Card
 from SleepingQueens.dataStructures import CardType
 from SleepingQueens.DrawingAndTrashPile import DrawingAndTrashPile
+from SleepingQueens.DrawingAndTrashPile import DiscardAll
+
 
 class Hand:
 
@@ -20,8 +22,10 @@ class Hand:
         return out
 
     def removePickedCardsAndRedraw(self) -> list[Card]:
-         return self.drawingAndTrashPile.discardAndDraw(self.pickedCards)
-
+         return self.drawingAndTrashPile.discardAndDraw(self.pickedCards,
+                                                        DiscardAll(self.drawingAndTrashPile.drawingPile,
+                                                                   self.drawingAndTrashPile.trashPile,
+                                                                   self.returnPickedCards(),))
     def returnPickedCards(self):
         return self.pickedCards
 
