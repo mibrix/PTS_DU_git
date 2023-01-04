@@ -12,7 +12,7 @@ from SleepingQueens.EvaluateAttack import EvaluateAttack
 from SleepingQueens.MoveQueen import MoveQueen
 from SleepingQueens.dataStructures import GameState
 from SleepingQueens.Messages import Messages
-from QueenCollection import Queen
+from SleepingQueens.QueenCollection import Queen
 
 
 
@@ -52,8 +52,7 @@ class Player():
         #pripad kedy chce hrac zahrat komplexny tah
         elif len(cards) == 2:
             #hrac chce vyhodit dve ciselne karty
-            if (self.playerState.cards[cards[0].getCardIndex()].type == CardType.Number
-                and self.playerState.cards[cards[1].getCardIndex()].type == CardType.Number):
+            if type(cards[0]) == type(cards[1]) == HandPosition and type(cards) == list[HandPosition]:
                 if self.evaluateNumberedCards.play([self.playerState.cards[i.getCardIndex()] for i in cards]):
                     self.hand.pickCards(cards)
                     new_cards = self.hand.removePickedCardsAndRedraw()
@@ -69,20 +68,18 @@ class Player():
                     return self.messages.UnsuccessfulTurnMessage(self.playerIdx)
 
             #hrac chce zobrat kralovnu superovi
-            elif((self.playerState.cards[cards[0].getCardIndex()].type == CardType.Knight
-                and cards[1].getPlayerIndex() != self.playerIdx)
-            or   (self.playerState.cards[cards[1].getCardIndex()].type == CardType.Knight
-                and cards[0].getPlayerIndex() != self.playerIdx)):
+            elif(type(cards[0]) == HandPosition and type(cards[1]) == AwokenQueenPosition or
+                type(cards[1]) == HandPosition and type(cards[0]) == AwokenQueenPosition):
 
                     temp = EvaluateAttack(CardType.Dragon, self.currentTargetOpponentHand ,self.currentTargetOpponentQueens)
-                    if cards[0].getPlayerIndex() != self.playerIdx:
+                    if type(cards[0]) == AwokenQueenPosition:
                         opp_ind = cards[0].getPlayerIndex()
                         ind = 0
                     else:
                         opp_ind = cards[1].getPlayerIndex()
                         ind = 1
                     #hrac sa ubranil
-                    if temp.play(cards[ind],cards[ind].getPlayerIndex()):
+                    if  temp.play(cards[ind],cards[ind].getPlayerIndex()):
                         return self.messages.UnsuccessfulAttackMessage(self.playerIdx, cards[ind].getPlayerIndex())
 
 
