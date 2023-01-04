@@ -52,7 +52,6 @@ class ShuffleAndDiscard(DrawingStrategy):
         self.drawingPile = self.drawingPile + self.trashPile
         self.trashPile = []
 
-        number_to_draw = len(self.discard)
         # discard and redraw
         for i in range(len(self.discard)):
             temp_vymaz = self.discard.pop(0)
